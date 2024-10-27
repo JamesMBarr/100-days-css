@@ -1,0 +1,112 @@
+:root {
+    --box-size: 260px
+}
+.container {
+    width: 400px;
+    height: 400px;
+    background: repeating-linear-gradient(
+        45deg,
+        white,
+        white 16px,
+        black 16px,
+        black 19px
+    );
+    border-radius: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.container-center {
+    position: absolute;
+    height: var(--box-size);
+    width: var(--box-size);
+    background-color: rgb(40, 40, 40);
+    
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 10px 10px 20px;
+}
+ 
+.shape {
+    /* variable values find empirically */
+    --face-width: 25px;
+    --face-height-long: 120px;
+    --long-x-offset: 35px;
+    --long-y-offset: -27px;
+    --face-height-short: 78px;
+    --short-x-offset: 18px;
+    --short-y-offset: 22.2px;
+    --light: rgb(220, 220, 220);
+    --medium: rgb(180, 180, 180);
+    --dark: rgb(140, 140, 140);
+
+    position: relative;
+    left: 50%;
+    top: 50%;
+}
+
+.face {
+    transform-origin: 0;
+}
+
+.face div {
+    transition: background-color 200ms linear;
+}
+
+.long {
+    position: absolute;
+    height: var(--face-height-long);
+    width: var(--face-width);
+    transform: translate(
+        calc((var(--face-width) / -2) + var(--long-x-offset)), 
+        calc((var(--face-height-long) / -2) + var(--long-y-offset))
+    ) skewX(30deg);
+}
+
+.short {
+    position: absolute;
+    height: var(--face-height-short);
+    width: var(--face-width);
+
+    transform: translate(
+        calc(((var(--face-width) / -2)) + var(--short-x-offset)),
+        calc((var(--face-height-short) / -2) + var(--short-y-offset))
+    ) rotate(-60deg) skewX(30deg);
+}
+
+.face:nth-of-type(1) div {
+    background-color: var(--medium);
+}
+
+.shape:hover .face:nth-of-type(1) div {
+    background-color: var(--dark);
+}
+
+.face:nth-of-type(2) {
+    transform: rotate(120deg);
+}
+
+
+.face:nth-of-type(2) div {
+    background-color: var(--dark);
+}
+
+.shape:hover .face:nth-of-type(2) div {
+    background-color: var(--light);
+}
+
+.face:nth-of-type(3) {
+    transform: rotate(-120deg);
+} 
+
+.face:nth-of-type(3) div {
+    background-color: var(--light);
+}
+
+.shape:hover .face:nth-of-type(3) div {
+    background-color: var(--medium);
+}
