@@ -30,83 +30,121 @@
     border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.4) 10px 10px 20px;
 }
- 
+
+
+@property --open-width {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 15px;
+}
+
+@property --face-width {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 15px;
+}
+
 .shape {
-    /* variable values find empirically */
-    --face-width: 25px;
-    --face-height-long: 120px;
-    --long-x-offset: 35px;
-    --long-y-offset: -27px;
-    --face-height-short: 78px;
-    --short-x-offset: 18px;
-    --short-y-offset: 22.2px;
+    /* constants */
+    --sin30: 0.5;
+    --sin60: 0.866;
+    --tan30: 0.5774;
+
     --light: rgb(220, 220, 220);
     --medium: rgb(180, 180, 180);
     --dark: rgb(140, 140, 140);
 
     position: relative;
     left: 50%;
-    top: 50%;
+    top: 55% ;
+
+    transition: --open-width 200ms linear, --face-width 200ms linear;
 }
 
-.face {
+.container-center:hover {
+    --open-width: 20px;
+    --face-width: 20px;
+}
+
+.side {
     transform-origin: 0;
 }
 
-.face div {
+.side div {
     transition: background-color 200ms linear;
 }
 
 .long {
     position: absolute;
-    height: var(--face-height-long);
-    width: var(--face-width);
+    /* set the height to width and vice versa to avoid a rotation */
+    height: var(--face-width);
+    width: calc(
+        2 * (((var(--open-width) + (2 * var(--face-width))) / var(--tan30))
+        - (2 * var(--face-width) * var(--tan30))
+        )
+    );
     transform: translate(
-        calc((var(--face-width) / -2) + var(--long-x-offset)), 
-        calc((var(--face-height-long) / -2) + var(--long-y-offset))
-    ) skewX(30deg);
+        calc(0px
+        /* correct for skew */
+        - (var(--face-width) * var(--sin30) / 2)
+        - (var(--open-width) / var(--tan30))
+        - ((var(--face-width) / var(--sin60)) + (var(--face-width) * var(--tan30)))
+        - 1px
+        ), 
+        calc(
+            var(--open-width) + var(--face-width)
+        )
+    ) skew(-30deg) 
 }
 
 .short {
     position: absolute;
-    height: var(--face-height-short);
-    width: var(--face-width);
+    height: var(--face-width);
+    width: calc(
+        2 * (((var(--open-width) + var(--face-width)) / var(--tan30))
+        - (1 * var(--face-width) * var(--tan30))
+        )
+    );
 
     transform: translate(
-        calc(((var(--face-width) / -2)) + var(--short-x-offset)),
-        calc((var(--face-height-short) / -2) + var(--short-y-offset))
-    ) rotate(-60deg) skewX(30deg);
+        calc(0px
+        /* correct for skew */
+        - (var(--face-width) * var(--sin30) / 2)
+        - (var(--open-width) / var(--tan30))
+        - 1px
+        ), 
+        var(--open-width)
+    ) skew(-30deg) 
 }
 
-.face:nth-of-type(1) div {
-    background-color: var(--medium);
-}
-
-.shape:hover .face:nth-of-type(1) div {
-    background-color: var(--dark);
-}
-
-.face:nth-of-type(2) {
+.side:nth-of-type(2) {
     transform: rotate(120deg);
 }
 
+.side:nth-of-type(3) {
+    transform: rotate(-120deg);
+}
 
-.face:nth-of-type(2) div {
+.face-1 {
     background-color: var(--dark);
 }
 
-.shape:hover .face:nth-of-type(2) div {
-    background-color: var(--light);
-}
-
-.face:nth-of-type(3) {
-    transform: rotate(-120deg);
-} 
-
-.face:nth-of-type(3) div {
-    background-color: var(--light);
-}
-
-.shape:hover .face:nth-of-type(3) div {
+.shape:hover .face-1 {
     background-color: var(--medium);
+}
+
+.face-2 {
+    background-color: var(--light);
+}
+
+.shape:hover .face-2 {
+    background-color: var(--dark);
+}
+
+.face-3 {
+    background-color: var(--medium);
+}
+
+.shape:hover .face-3 {
+    background-color: var(--light);
 }
