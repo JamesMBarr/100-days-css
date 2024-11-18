@@ -1,0 +1,83 @@
+:root {
+    --image-size: 130px;
+    --spacing: 5px;
+    /* sum of the above two */
+    --translate: 135px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 400px;
+}
+
+img {
+    position: absolute;
+    height: var(--image-size);
+    width: var(--image-size);
+
+    z-index: 1;
+    filter: brightness(1);
+
+    transform: translateX(var(--translate-x)) translateY(var(--translate-y));
+    transition: all 0.5s;
+}
+
+img.selected {
+    height: 400px;
+    width: 400px;
+
+    z-index: 1000;
+
+    transform: translateY(0) translateX(0);
+    transition: all 0.5s;
+}
+
+img.blacken {
+    z-index: 0;
+    filter: brightness(0)
+}
+
+/* row one */
+img:nth-of-type(1),
+img:nth-of-type(2),
+img:nth-of-type(3) {
+    --translate-y: calc(var(--translate) * -1)
+}
+
+/* row two */
+img:nth-of-type(4),
+img:nth-of-type(5),
+img:nth-of-type(6) {
+    --translate-y: 0
+}
+
+/* row three */
+img:nth-of-type(7),
+img:nth-of-type(8),
+img:nth-of-type(9) {
+    --translate-y: var(--translate)
+}
+
+/* column one */
+img:nth-of-type(1),
+img:nth-of-type(4),
+img:nth-of-type(7) {
+    --translate-x: calc(var(--translate) * -1)
+}
+
+/* column two */
+img:nth-of-type(2),
+img:nth-of-type(5),
+img:nth-of-type(8) {
+    --translate-x: 0
+}
+
+/* column three */
+img:nth-of-type(3),
+img:nth-of-type(6),
+img:nth-of-type(9) {
+    --translate-x: var(--translate)
+}
