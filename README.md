@@ -20,3 +20,10 @@ All commands are run from the root of the project, from a terminal:
 - Implement infinite scroll on index page.
 - Read and parse days directory to calculate the days arrays.
 - Remove the use of `iframe` in favour of htmx.
+
+## Deploy
+
+The application is deployed to Cloudflare pages and configured to automatically
+deploy on changes to `main` branch.
+
+https://100-days-css.pages.dev/
