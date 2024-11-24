@@ -1,6 +1,11 @@
 :root {
     --box-size: 260px
 }
+
+html {
+    overflow: hidden;
+}
+
 .container {
     width: 400px;
     height: 400px;
