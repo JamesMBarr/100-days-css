@@ -1,18 +1,17 @@
 {
-  "name": "100dayscss",
-  "version": "0.1.0",
-  "description": "Collection of attempted 100dayscss challenges. See https://100dayscss.com/.",
-  "main": "server.js",
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "author": "James Barr",
-  "license": "MIT",
   "dependencies": {
-    "live-server": "^1.2.2"
-  },
-  "volta": {
-    "node": "22.10.0",
-    "npm": "10.9.0"
+    "astro": "^4.16.13",
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.7.2"
   }
 }
