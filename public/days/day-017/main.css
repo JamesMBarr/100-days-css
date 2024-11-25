@@ -16,7 +16,6 @@ html {
         black 16px,
         black 19px
     );
-    border-radius: 0.5rem;
 
     display: flex;
     flex-direction: column;

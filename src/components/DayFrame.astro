@@ -13,12 +13,14 @@ const paddingDay = String(day).padStart(3, "0");
       class="frame"
       src=`./days/day-${paddingDay}/index.html`
       frameborder="0"></iframe>
-    <a href=`https://100dayscss.com/days/${day}/`>
-      <h2>
-        Day {day}
-        <span class="one">&rarr;</span>
-      </h2>
-    </a>
+    <div class="content">
+      <a href=`https://100dayscss.com/days/${day}/`>
+        <h2>
+          Day {day}
+          <span class="one">&rarr;</span>
+        </h2>
+      </a>
+    </div>
   </div>
 </li>
 <style>
@@ -27,13 +29,12 @@ const paddingDay = String(day).padStart(3, "0");
     display: flex;
     padding: 1px;
     background-color: #23262d;
-    border-radius: 7px;
+    border-radius: 0.5rem;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   }
   .link-card > div {
     width: 100%;
     line-height: 1.4;
-    padding: 1.5rem;
     border-radius: 8px;
     color: white;
     opacity: 0.8;
@@ -41,7 +42,10 @@ const paddingDay = String(day).padStart(3, "0");
   .frame {
     width: var(--day-container-size);
     height: var(--day-container-size);
-    border-radius: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  .content {
+    padding: 1rem
   }
   a {
     color: inherit;
@@ -56,7 +60,6 @@ const paddingDay = String(day).padStart(3, "0");
   }
   h2 {
     font-size: 1.25rem;
-    margin-top: 1rem;
   }
   span {
     transition: padding-left 0.5s;

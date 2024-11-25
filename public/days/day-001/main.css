@@ -24,7 +24,6 @@ body {
     height: 400px;
     background: #4ec4ca;
     background: linear-gradient(45deg, #43399f, #4ec4ca);
-    border-radius: 0.5rem;
 
     display: flex;
     flex-direction: column;

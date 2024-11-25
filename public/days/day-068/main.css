@@ -15,7 +15,6 @@
     width: 400px;
     height: 400px;
     background: var(--background-color);
-    border-radius: 0.5rem;
 
     display: flex;
     flex-direction: column;
