@@ -6,7 +6,7 @@ function onClick(ele) {
         for (const image of images) {
             image.classList.remove("blacken")
         }
-    }    
+    }
     else {
         ele.classList.add("selected")
         for (const image of images) {

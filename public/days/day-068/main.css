@@ -166,7 +166,7 @@
     height: var(--dot-size);
     width: var(--dot-size);
     border-radius: 50%;
-    
+
     top: var(--centered-position);
     left: var(--centered-position);
 

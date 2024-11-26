@@ -3,7 +3,7 @@ function onClick(ele) {
 
     if (ele.classList.contains("close")) {
         ele.classList.remove("close")
-    }    
+    }
     else {
         ele.classList.add("close")
     }

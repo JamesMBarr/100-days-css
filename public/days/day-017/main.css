@@ -30,7 +30,7 @@ html {
     height: var(--box-size);
     width: var(--box-size);
     background-color: rgb(40, 40, 40);
-    
+
     border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.4) 10px 10px 20px;
 }
@@ -94,11 +94,11 @@ html {
         - (var(--open-width) / var(--tan30))
         - ((var(--face-width) / var(--sin60)) + (var(--face-width) * var(--tan30)))
         - 1px
-        ), 
+        ),
         calc(
             var(--open-width) + var(--face-width)
         )
-    ) skew(-30deg) 
+    ) skew(-30deg)
 }
 
 .short {
@@ -116,9 +116,9 @@ html {
         - (var(--face-width) * var(--sin30) / 2)
         - (var(--open-width) / var(--tan30))
         - 1px
-        ), 
+        ),
         var(--open-width)
-    ) skew(-30deg) 
+    ) skew(-30deg)
 }
 
 .side:nth-of-type(2) {
