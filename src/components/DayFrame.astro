@@ -5,14 +5,28 @@ interface Props {
 
 const { day } = Astro.props;
 const paddingDay = String(day).padStart(3, "0");
+
+// find astro file if it exists
+const dayComponents = await Astro.glob("../pages/days/day-*.astro").then(
+  (files) => files.filter((file) => file.file.includes(`day-${paddingDay}`))
+);
+const dayComponent = dayComponents.length === 1 ? dayComponents[0] : null;
 ---
 
 <li class="link-card">
   <div>
-    <iframe
-      class="frame"
-      src=`./days/day-${paddingDay}/index.html`
-      frameborder="0"></iframe>
+    {
+      // render astro file else render an iframe
+      dayComponent ? (
+        <dayComponent.default />
+      ) : (
+        <iframe
+          class="frame"
+          src={`./days/day-${paddingDay}/index.html`}
+          frameborder="0"
+        />
+      )
+    }
     <div class="content">
       <a href=`https://100dayscss.com/days/${day}/`>
         <h2>
