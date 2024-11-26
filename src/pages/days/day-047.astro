@@ -1,0 +1,79 @@
+---
+// coupled to the width attr on pixel
+const GRID_SIZE = 20;
+
+// space invader points
+const points = [
+  [9, 6], [10, 6],
+  [8, 7], [9, 7], [10, 7], [11, 7],
+  [7, 8], [8, 8], [9, 8], [10, 8], [11, 8], [12, 8],
+  [6, 9], [7, 9], [9, 9], [10, 9], [12, 9], [13, 9],
+  [6, 10], [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10], [13, 10],
+  [8, 11], [11, 11],
+  [7, 12], [9, 12], [10, 12], [12, 12],
+  [6, 13], [8, 13], [11, 13], [13, 13],
+
+];
+const pointsAsIndex = points.map(([x, y]) => y * GRID_SIZE + x);
+---
+
+<div class="container">
+  <div class="grid">
+    {
+      Array.apply(null, Array(GRID_SIZE * GRID_SIZE)).map((_, i) => (
+        <div
+          data-pixel-button
+          class:list={["pixel", { selected: pointsAsIndex.includes(i) }]}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const onClick = (element: Element) => {
+    if (element.classList.contains("selected")) {
+      element.classList.remove("selected");
+    } else {
+      element.classList.add("selected");
+    }
+  };
+
+  const pixels = document.querySelectorAll('[data-pixel-button]');
+
+  pixels.forEach((pixel) => {
+    pixel.addEventListener('click', () => onClick(pixel));
+  });
+</script>
+
+<style>
+  .container {
+    height: 400px;
+    width: 400px;
+  }
+  .grid {
+    width: 100%;
+    height: 100%;
+    line-height: 0px;
+  }
+  .pixel {
+    width: 5%;
+    height: 5%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-color: #e24e3e;
+    background-color: #de4638;
+
+    transition: background-color 0.2s;
+  }
+
+  .pixel:hover {
+    background-color: #f56659;
+  }
+
+  .pixel.selected {
+    border-color: white;
+    background-color: white;
+  }
+</style>
