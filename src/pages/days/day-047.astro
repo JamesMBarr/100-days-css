@@ -18,16 +18,14 @@ const pointsAsIndex = points.map(([x, y]) => y * GRID_SIZE + x);
 ---
 
 <div class="container">
-  <div class="grid">
-    {
-      Array.apply(null, Array(GRID_SIZE * GRID_SIZE)).map((_, i) => (
-        <div
-          data-pixel-button
-          class:list={["pixel", { selected: pointsAsIndex.includes(i) }]}
-        />
-      ))
-    }
-  </div>
+  {
+    Array.apply(null, Array(GRID_SIZE * GRID_SIZE)).map((_, i) => (
+      <div
+        data-pixel-button
+        class:list={["pixel", { selected: pointsAsIndex.includes(i) }]}
+      />
+    ))
+  }
 </div>
 
 <script>
@@ -50,20 +48,15 @@ const pointsAsIndex = points.map(([x, y]) => y * GRID_SIZE + x);
   .container {
     height: 400px;
     width: 400px;
-  }
-  .grid {
-    width: 100%;
-    height: 100%;
     line-height: 0px;
+    background-color: #de4638;
   }
   .pixel {
     width: 5%;
     height: 5%;
     display: inline-block;
     box-sizing: border-box;
-    border: 1px solid;
-    border-color: #e24e3e;
-    background-color: #de4638;
+    border: 1px solid #e24e3e;
 
     transition: background-color 0.2s;
   }
